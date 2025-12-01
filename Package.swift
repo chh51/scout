@@ -6,7 +6,8 @@ import PackageDescription
 let package = Package(
     name: "Scout",
     platforms: [
-        .iOS(.v16)
+        .iOS(.v16),
+        .macCatalyst(.v16),
     ],
     products: [
         .library(

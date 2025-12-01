@@ -16,6 +16,20 @@ func log(
     date: Date,
     context: NSManagedObjectContext
 ) throws {
+    #if DEBUG
+    var msg_ = ""
+    switch level {
+    case .trace:    msg_ += "  "
+    case .debug:    msg_ += ". "
+    case .info:     msg_ += "- "
+    case .notice:   msg_ += "+ "
+    case .warning:  msg_ += "⚠️ "
+    case .error:    msg_ += "‼️ "
+    case .critical: msg_ += "💣 "
+    }
+    msg_ += name
+    print( msg_ )
+    #endif
     let entity = NSEntityDescription.entity(forEntityName: "EventObject", in: context)!
     let event = EventObject(entity: entity, insertInto: context)
 
